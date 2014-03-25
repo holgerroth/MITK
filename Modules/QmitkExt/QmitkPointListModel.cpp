@@ -171,11 +171,13 @@ QVariant QmitkPointListModel::data(const QModelIndex& index, int role) const
     if (pointFound == false)
       return QVariant();
 
-    QString s = QString("%0: (%1, %2, %3)")
+    QString s = QString("%0: (%1, %2, %3) - %4")
       .arg( id, 3)
       .arg( p[0], 0, 'f', 3 )
       .arg( p[1], 0, 'f', 3 )
-      .arg( p[2], 0, 'f', 3 );
+      .arg( p[2], 0, 'f', 3 )
+      .arg( m_PointCategoryStrings->getPointCategoryString( pointSet->GetSpecificationTypeInfo(id, m_TimeStep) ).c_str() );
+
     return QVariant(s);
   }
   else
@@ -336,8 +338,6 @@ void QmitkPointListModel::SpecifySelectedPointCategory(QString text)
 
   mitk::PointSet::PointIdentifier selectedID = pointSet->SearchSelectedPoint(m_TimeStep);
   mitk::PointSet::PointType pt = pointSet->GetPoint(selectedID, m_TimeStep);
-
-  std::cout << "current pointSet->GetPointSetSeriesSize() = " << pointSet->GetPointSetSeriesSize() << std::endl;
 
   int category_id = m_PointCategoryStrings->getPointCategoryIndex( text.toStdString() );
 

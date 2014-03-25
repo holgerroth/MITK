@@ -278,12 +278,11 @@ void QmitkPointListViewWidget::Update(bool currentRowChanged)
   for (mitk::PointSet::PointsContainer::Iterator it = pointset->GetPoints()->Begin(); it != pointset->GetPoints()->End(); ++it)
   {
 
-    text = QString("%0: (%1, %2, %3) - %4")
+    text = QString("%0: (%1, %2, %3)")
       .arg( i, 3)
       .arg( it.Value().GetElement(0), 0, 'f', 3 )
       .arg( it.Value().GetElement(1), 0, 'f', 3 )
-      .arg( it.Value().GetElement(2), 0, 'f', 3 )
-      .arg( "CATEGORY" );
+      .arg( it.Value().GetElement(2), 0, 'f', 3 );
 
     if(i==this->count())
       this->addItem(text); // insert text

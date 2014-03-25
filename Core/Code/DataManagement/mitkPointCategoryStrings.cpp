@@ -10,10 +10,12 @@ A PARTICULAR PURPOSE.
 
 #include "mitkPointCategoryStrings.h"
 #include <mitkCommon.h>
+#include <mitkVector.h>
 
 /***************       CONSTRUCTOR      ***************/
 mitk::mitkPointCategoryStrings::mitkPointCategoryStrings()
 {
+  m_PointSpecificationTypeStrings.clear();
 	//MITK point specifications
   m_PointSpecificationTypeStrings.push_back(std::string("PTUNDEFINED"));
 	m_PointSpecificationTypeStrings.push_back(std::string("PTSTART"));
@@ -75,7 +77,7 @@ unsigned int mitk::mitkPointCategoryStrings::getPointCategoryIndex( std::string 
     }
   }
 
-  return EXIT_FAILURE;
+  return mitk::PTUNDEFINED;
 }
 
 std::string mitk::mitkPointCategoryStrings::getPointCategoryString( unsigned int index )
