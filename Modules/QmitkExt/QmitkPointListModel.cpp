@@ -33,6 +33,8 @@ m_PointSetDeletedObserverTag(0),
 m_TimeStep(t)
 {
   ObserveNewPointSet( pointSetNode );
+
+  m_PointCategoryStrings = new mitk::mitkPointCategoryStrings;
 }
 
 Qt::ItemFlags QmitkPointListModel::flags(const QModelIndex& /*index*/) const
@@ -322,7 +324,7 @@ void QmitkPointListModel::RemoveSelectedPoint()
   mitk::RenderingManager::GetInstance()->RequestUpdateAll(); // Workaround for update problem in PointSet/Mapper
 }
 
-void QmitkPointListModel::SpecifySelectedPoint(QString text)
+void QmitkPointListModel::SpecifySelectedPointCategory(QString text)
 {
   std::cout << "  specification text: " << text.toStdString() << std::endl;
 
@@ -336,7 +338,10 @@ void QmitkPointListModel::SpecifySelectedPoint(QString text)
   mitk::PointSet::PointType pt = pointSet->GetPoint(selectedID, m_TimeStep);
 
   std::cout << "current pointSet->GetPointSetSeriesSize() = " << pointSet->GetPointSetSeriesSize() << std::endl;
-  pointSet->SetPoint( selectedID, pt, mitk::PTCAT8, pointSet->GetPointSetSeriesSize()-1 );
+
+  int category_id = m_PointCategoryStrings->getPointCategoryIndex( text.toStdString() );
+
+  pointSet->SetPoint( selectedID, pt, (mitk::PointSpecificationType)category_id, pointSet->GetPointSetSeriesSize()-1 );
 }
 
 mitk::PointSet* QmitkPointListModel::CheckForPointSetInNode(mitk::DataNode* node) const

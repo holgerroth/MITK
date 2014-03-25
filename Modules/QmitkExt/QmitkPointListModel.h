@@ -23,6 +23,8 @@ See LICENSE.txt or http://www.mitk.org for details.
 #include "mitkDataNode.h"
 #include "mitkPointSet.h"
 
+#include <mitkPointCategoryStrings.h>
+
 class QmitkExt_EXPORT QmitkPointListModel : public QAbstractListModel
 {
   Q_OBJECT
@@ -104,7 +106,7 @@ public slots:
 
   void RemoveSelectedPoint();
 
-  void SpecifySelectedPoint(QString text);
+  void SpecifySelectedPointCategory(QString text);
 
 
 signals:
@@ -129,5 +131,7 @@ protected:
   unsigned int    m_PointSetModifiedObserverTag;
   unsigned int    m_PointSetDeletedObserverTag;
   int             m_TimeStep;
+
+  mitk::mitkPointCategoryStrings* m_PointCategoryStrings;
 };
 #endif

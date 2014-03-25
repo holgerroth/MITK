@@ -23,6 +23,8 @@ See LICENSE.txt or http://www.mitk.org for details.
 #include <mitkSliceNavigationController.h>
 #include "QmitkPointListModel.h"
 
+#include <mitkPointCategoryStrings.h>
+
 class QmitkStdMultiWidget;
 
 /*!
@@ -151,6 +153,8 @@ protected:
   /// used to position the planes on a selected point
   QmitkStdMultiWidget*    m_MultiWidget;
   QLabel*                m_TimeStepFaderLabel;
+
+  mitk::mitkPointCategoryStrings* m_PointCategoryStrings;
 
 };
 #endif

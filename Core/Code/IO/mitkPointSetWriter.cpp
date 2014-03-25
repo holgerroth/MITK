@@ -61,6 +61,8 @@ mitk::PointSetWriter::PointSetWriter()
     m_Indent = 2;
     m_IndentDepth = 0;
     m_Success = false;
+
+    m_PointCategoryStrings = new mitk::mitkPointCategoryStrings;
 }
 
 
@@ -161,7 +163,8 @@ void mitk::PointSetWriter::WriteXML( mitk::PointSet* pointSet, std::ofstream& ou
           mitk::PointSet::PointType point = it->Value();
 
           WriteStartElement( XML_SPEC, out );
-          WriteCharacterData( ConvertToString( pointSet->GetSpecificationTypeInfo(it->Index(), i) ).c_str() , out );
+          //WriteCharacterData( ConvertToString( pointSet->GetSpecificationTypeInfo(it->Index(), i) ).c_str() , out );
+          WriteCharacterData( m_PointCategoryStrings->getPointCategoryString( pointSet->GetSpecificationTypeInfo(it->Index(), i) ).c_str() , out );
           WriteEndElement( XML_SPEC, out, false );
 
           WriteStartElement( XML_X, out );

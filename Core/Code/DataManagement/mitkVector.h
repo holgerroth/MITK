@@ -22,6 +22,9 @@ See LICENSE.txt or http://www.mitk.org for details.
 // can be removed when fixed in ITK
 #include <cstring>
 
+#include <vector>
+#include <string>
+
 #include <itkPoint.h>
 #include <float.h>
 #include <itkIndex.h>
@@ -72,7 +75,24 @@ enum PointSpecificationType
   PTCAT5,
   PTCAT6,
   PTCAT7,
-  PTCAT8
+  PTCAT8,
+  PTCAT9,
+  PTCAT10,
+  PTCAT11,
+  PTCAT12,
+  PTCAT13,
+  PTCAT14,
+  PTCAT15,
+  PTCAT16,
+  PTCAT17,
+  PTCAT18,
+  PTCAT19,
+  PTCAT20,
+  PTCAT21,
+  PTCAT22,
+  PTCAT23,
+  PTCAT24,
+  PTCAT25
 };
 
 typedef itk::NumericTraits<mitk::ScalarType> ScalarTypeNumericTraits;
