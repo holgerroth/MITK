@@ -104,6 +104,8 @@ public slots:
 
   void RemoveSelectedPoint();
 
+  void SpecifySelectedPoint(QString text);
+
 
 signals:
 

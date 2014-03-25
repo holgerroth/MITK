@@ -29,17 +29,17 @@ set(MITK_EXT_PLUGINS
   org.mitk.gui.qt.examplesopencv:OFF
   org.mitk.gui.qt.igtexamples:OFF
   org.mitk.gui.qt.igttracking:OFF
-  org.mitk.gui.qt.imagecropper:OFF
+  org.mitk.gui.qt.imagecropper:ON
   org.mitk.gui.qt.imagenavigator:ON
   org.mitk.gui.qt.materialeditor:OFF
-  org.mitk.gui.qt.measurementtoolbox:OFF
+  org.mitk.gui.qt.measurementtoolbox:ON
   org.mitk.gui.qt.meshdecimation:OFF
   org.mitk.gui.qt.moviemaker:OFF
-  org.mitk.gui.qt.pointsetinteraction:OFF
+  org.mitk.gui.qt.pointsetinteraction:ON
   org.mitk.gui.qt.python:OFF
-  org.mitk.gui.qt.registration:OFF
+  org.mitk.gui.qt.registration:ON
   org.mitk.gui.qt.remeshing:OFF
-  org.mitk.gui.qt.segmentation:OFF
+  org.mitk.gui.qt.segmentation:ON
   org.mitk.gui.qt.simulation:OFF
   org.mitk.gui.qt.toftutorial:OFF
   org.mitk.gui.qt.tofutil:OFF

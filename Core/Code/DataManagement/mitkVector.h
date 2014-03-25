@@ -64,7 +64,15 @@ enum PointSpecificationType
   PTSTART,
   PTCORNER,
   PTEDGE,
-  PTEND
+  PTEND,
+  PTCAT1,
+  PTCAT2,
+  PTCAT3,
+  PTCAT4,
+  PTCAT5,
+  PTCAT6,
+  PTCAT7,
+  PTCAT8
 };
 
 typedef itk::NumericTraits<mitk::ScalarType> ScalarTypeNumericTraits;

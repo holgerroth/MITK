@@ -322,6 +322,23 @@ void QmitkPointListModel::RemoveSelectedPoint()
   mitk::RenderingManager::GetInstance()->RequestUpdateAll(); // Workaround for update problem in PointSet/Mapper
 }
 
+void QmitkPointListModel::SpecifySelectedPoint(QString text)
+{
+  std::cout << "  specification text: " << text.toStdString() << std::endl;
+
+  mitk::PointSet::Pointer pointSet = this->CheckForPointSetInNode(m_PointSetNode);
+  if (pointSet.IsNull())
+  {
+    return;
+  }
+
+  mitk::PointSet::PointIdentifier selectedID = pointSet->SearchSelectedPoint(m_TimeStep);
+  mitk::PointSet::PointType pt = pointSet->GetPoint(selectedID, m_TimeStep);
+
+  std::cout << "current pointSet->GetPointSetSeriesSize() = " << pointSet->GetPointSetSeriesSize() << std::endl;
+  pointSet->SetPoint( selectedID, pt, mitk::PTCAT8, pointSet->GetPointSetSeriesSize()-1 );
+}
+
 mitk::PointSet* QmitkPointListModel::CheckForPointSetInNode(mitk::DataNode* node) const
 {
   if (node != NULL)

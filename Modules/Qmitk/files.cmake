@@ -28,6 +28,7 @@ QmitkServiceListWidget.cpp
 QmitkSliderLevelWindowWidget.cpp
 QmitkStdMultiWidget.cpp
 QmitkMouseModeSwitcher.cpp
+#QmitkPointSelectionWidgetContextMenu.cpp
 )
 
 set(MOC_H_FILES

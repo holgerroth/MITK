@@ -317,8 +317,6 @@ void QmitkPointListView::fadeTimeStepIn()
 
 }
 
-
-
 void QmitkPointListView::fadeTimeStepOut()
 {
 
@@ -326,6 +324,28 @@ void QmitkPointListView::fadeTimeStepOut()
 
 }
 
+void QmitkPointListView::ctxMenu(const QPoint &pos)
+{
+  QMenu menu;
+  menu.addAction( "File A" );
+  menu.addAction( "File B" );
+  menu.addAction( "File C" );
+  connect(&menu, SIGNAL(triggered(QAction*)), this, SLOT(SetCategory(QAction*)));
+
+  menu.exec(this->mapToGlobal(pos));
+}
+
+void QmitkPointListView::SetCategory(QAction* action)
+{
+  action->setCheckable(true);
+  action->setChecked(true);
+  std::cout << "Triggered category: " << action->text().toStdString() << std::endl;
+  
+  this->m_PointListModel->SpecifySelectedPoint( action->text() );
+} 
+
+
+/*
 void QmitkPointListView::ctxMenu(const QPoint &pos)
 {
   QMenu *menu = new QMenu;
@@ -365,6 +385,7 @@ void QmitkPointListView::ctxMenu(const QPoint &pos)
   menu->exec(this->mapToGlobal(pos));
 
 }
+*/
 
 void QmitkPointListView::SetFading(bool onOff)
 {

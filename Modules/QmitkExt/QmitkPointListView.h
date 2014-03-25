@@ -118,6 +118,9 @@ protected slots:
   /// open ContextMenu
   void ctxMenu(const QPoint &pos);
 
+  /// set Point Category from ContextMenu
+  void SetCategory(QAction* action);
+
   /// Turn TimeStep Fading On/Off
   void SetFading(bool onOff);
 
