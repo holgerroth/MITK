@@ -15,6 +15,10 @@ A PARTICULAR PURPOSE.
 /***************       CONSTRUCTOR      ***************/
 mitk::mitkPointCategoryStrings::mitkPointCategoryStrings()
 {
+  // ********************WARNING********************************* //
+  // THESE STRINGS CAN NOT INCLUDE XML formatting characters such as
+  // '>', '<', '\' or '/'
+  // ********************WARNING********************************* //
   m_PointSpecificationTypeStrings.clear();
 	//MITK point specifications
   m_PointSpecificationTypeStrings.push_back(std::string("PTUNDEFINED"));
@@ -26,18 +30,18 @@ mitk::mitkPointCategoryStrings::mitkPointCategoryStrings()
 	m_PointSpecificationTypeStrings.push_back(std::string("True lymp node"));
 	m_PointSpecificationTypeStrings.push_back(std::string("False lymp node"));
 	//size
-	m_PointSpecificationTypeStrings.push_back(std::string("Size: short axis < 1cm"));
-	m_PointSpecificationTypeStrings.push_back(std::string("Size: short axis >=1cm"));
+	m_PointSpecificationTypeStrings.push_back(std::string("Size: short axis less 1cm"));
+	m_PointSpecificationTypeStrings.push_back(std::string("Size: short axis geq. 1cm"));
 	//density
-	m_PointSpecificationTypeStrings.push_back(std::string("Density: < 25HU"));
-	m_PointSpecificationTypeStrings.push_back(std::string("Density: >=25HU"));
+	m_PointSpecificationTypeStrings.push_back(std::string("Density: less 25HU"));
+	m_PointSpecificationTypeStrings.push_back(std::string("Density: geq. 25HU"));
 	//Morphology
 	m_PointSpecificationTypeStrings.push_back(std::string("Morphology: normal"));
 	m_PointSpecificationTypeStrings.push_back(std::string("Morphology: dysmorphic"));
 	m_PointSpecificationTypeStrings.push_back(std::string("Morphology: indeterminate"));
 	//border
 	m_PointSpecificationTypeStrings.push_back(std::string("Border: smooth and distinct"));
-	m_PointSpecificationTypeStrings.push_back(std::string("Border: irregular and/or indistinct"));
+	m_PointSpecificationTypeStrings.push_back(std::string("Border: irregular and-or indistinct"));
 	m_PointSpecificationTypeStrings.push_back(std::string("Border: indeterminate"));
 	//hilum
 	m_PointSpecificationTypeStrings.push_back(std::string("Hilum: present"));
@@ -45,8 +49,8 @@ mitk::mitkPointCategoryStrings::mitkPointCategoryStrings()
 	m_PointSpecificationTypeStrings.push_back(std::string("Hilum: indeterminate"));
 	//calcification
 	m_PointSpecificationTypeStrings.push_back(std::string("Calcification: not present"));
-	m_PointSpecificationTypeStrings.push_back(std::string("Calcification: < 50%"));
-	m_PointSpecificationTypeStrings.push_back(std::string("Calcification: >=50%"));
+	m_PointSpecificationTypeStrings.push_back(std::string("Calcification: less 50%"));
+	m_PointSpecificationTypeStrings.push_back(std::string("Calcification: geq. 50%"));
 	m_PointSpecificationTypeStrings.push_back(std::string("Calcification: indeterminate"));
 	//proximity to adjacent structures
 	m_PointSpecificationTypeStrings.push_back(std::string("Proximity to adjacent structures: distinct from other structures"));
