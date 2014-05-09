@@ -25,6 +25,8 @@ See LICENSE.txt or http://www.mitk.org for details.
 #include <vtkXMLParser.h>
 #include <tinyxml.h>
 
+#include <mitkPointCategoryStrings.h>
+
 namespace mitk
 {
 /**
@@ -136,6 +138,8 @@ protected:
     std::string m_FilePattern;
 
     bool m_Success;
+
+    mitk::mitkPointCategoryStrings* m_PointCategoryStrings;
 
 };
 

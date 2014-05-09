@@ -22,6 +22,9 @@ See LICENSE.txt or http://www.mitk.org for details.
 
 #include "mitkRenderingManager.h"
 
+#include <mitkVector.h>
+#include <mitkPointCategoryStrings.h> // Change this class to get point category strings
+
 #include <QKeyEvent>
 #include <QPalette>
 #include <QTimer>
@@ -72,6 +75,7 @@ QmitkPointListView::QmitkPointListView( QWidget* parent )
 
   connect(this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(ctxMenu(const QPoint &)));
 
+   m_PointCategoryStrings = new mitk::mitkPointCategoryStrings;
 }
 
 QmitkPointListView::~QmitkPointListView()
@@ -317,8 +321,6 @@ void QmitkPointListView::fadeTimeStepIn()
 
 }
 
-
-
 void QmitkPointListView::fadeTimeStepOut()
 {
 
@@ -326,6 +328,33 @@ void QmitkPointListView::fadeTimeStepOut()
 
 }
 
+void QmitkPointListView::ctxMenu(const QPoint &pos)
+{
+  std::vector<std::string> categories = m_PointCategoryStrings->getPointCategoryStrings();
+
+  unsigned int start_category = 5; // Do not dispaly MITK point specifications
+
+  QMenu menu;
+  for (unsigned int i=start_category; i<categories.size(); i++)
+  {
+    menu.addAction( categories[i].c_str() );
+  }
+  connect(&menu, SIGNAL(triggered(QAction*)), this, SLOT(SetCategory(QAction*)));
+
+  menu.exec(this->mapToGlobal(pos));
+}
+
+void QmitkPointListView::SetCategory(QAction* action)
+{
+  action->setCheckable(true);
+  action->setChecked(true);
+  std::cout << "Triggered category: " << action->text().toStdString() << std::endl;
+  
+  this->m_PointListModel->SpecifySelectedPointCategory( action->text() );
+} 
+
+
+/*
 void QmitkPointListView::ctxMenu(const QPoint &pos)
 {
   QMenu *menu = new QMenu;
@@ -365,6 +394,7 @@ void QmitkPointListView::ctxMenu(const QPoint &pos)
   menu->exec(this->mapToGlobal(pos));
 
 }
+*/
 
 void QmitkPointListView::SetFading(bool onOff)
 {

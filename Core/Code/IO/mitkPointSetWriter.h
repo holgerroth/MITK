@@ -22,6 +22,8 @@ See LICENSE.txt or http://www.mitk.org for details.
 #include <mitkFileWriter.h>
 #include <mitkPointSet.h>
 
+#include <mitkPointCategoryStrings.h>
+
 namespace mitk
 {
 
@@ -229,7 +231,7 @@ protected:
 
     bool m_Success;
 
-
+    mitk::mitkPointCategoryStrings* m_PointCategoryStrings;
 
 public:
 

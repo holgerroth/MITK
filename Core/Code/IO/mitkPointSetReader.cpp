@@ -23,6 +23,8 @@ See LICENSE.txt or http://www.mitk.org for details.
 mitk::PointSetReader::PointSetReader()
 {
   m_Success = false;
+
+  m_PointCategoryStrings = new mitk::mitkPointCategoryStrings;
 }
 
 
@@ -107,7 +109,9 @@ mitk::PointSet::Pointer mitk::PointSetReader::ReadPoint(mitk::PointSet::Pointer 
        id = atoi(currentPoint->FirstChildElement("id")->GetText());
         if(currentPoint->FirstChildElement("specification") != NULL)
         {
-          spec = (mitk::PointSpecificationType) atoi(currentPoint->FirstChildElement("specification")->GetText());
+          //spec = (mitk::PointSpecificationType) atoi(currentPoint->FirstChildElement("specification")->GetText());
+          std::string specText = currentPoint->FirstChildElement("specification")->GetText();
+          spec = (mitk::PointSpecificationType) m_PointCategoryStrings->getPointCategoryIndex( specText );
         }
         x = atof(currentPoint->FirstChildElement("x")->GetText());
         y = atof(currentPoint->FirstChildElement("y")->GetText());

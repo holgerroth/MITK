@@ -23,7 +23,6 @@ See LICENSE.txt or http://www.mitk.org for details.
 #include <itkMesh.h>
 #include <itkDefaultDynamicMeshTraits.h>
 
-
 namespace mitk {
 
 /**
